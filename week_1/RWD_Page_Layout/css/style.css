@@ -115,7 +115,6 @@ footer {
 
 @media screen and (min-width: 1200px) {
   body {
-    max-width: 1200px;
     margin: 0 auto;
   }
 
@@ -132,5 +131,9 @@ footer {
     width: 30%;
     margin-left: 20px;
     justify-content: flex-end;
+  }
+
+  main {
+    max-width: 1200px;
   }
 }
