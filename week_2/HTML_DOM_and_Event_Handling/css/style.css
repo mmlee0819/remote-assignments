@@ -1,0 +1,176 @@
+* {
+  box-sizing: border-box;
+}
+
+/* mobile-first: initial layout based on screen width < 500px  */
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+nav,
+.welcome,
+.content-wrapper,
+.content-wrapper-hidden {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* header */
+nav {
+  background-color: #eeeeee;
+}
+
+.website-title {
+  margin: 0.6rem auto 0.6rem 1.6rem;
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
+.mobile-menu-area {
+  margin: 0.5rem 0.2rem 0.6rem auto;
+}
+
+/* .menu-items {
+  display: none;
+} */
+
+.menu-items {
+  position: fixed;
+  top: 0px;
+  right: -1000px;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.close-menu-btn {
+  position: fixed;
+  right: -1000px;
+  margin: 0px 15px auto;
+  font-size: 1rem;
+}
+
+.menu-item {
+  margin: 0px auto 10px 5px;
+  padding: 10px;
+}
+
+.fa-solid.fa-bars {
+  margin: 0rem 0.6rem 0rem auto;
+  font-size: 1.4rem;
+}
+
+.welcome {
+  height: 200px;
+  font-size: 1.8rem;
+  background-color: #ccdded;
+  justify-content: center;
+  align-items: center;
+}
+
+/* main */
+main {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.content-wrapper,
+.content-wrapper-hidden {
+  margin-bottom: 0.5rem;
+}
+
+.content-box {
+  flex: 1 400px;
+  padding-top: 10px;
+  margin: 0.6rem auto;
+  min-height: 140px;
+  background-color: #8899a9;
+}
+
+
+#action-btn {
+  display: inline-flex;
+  flex: 1;
+  padding: 1rem;
+  margin-left: auto;
+  background-color: #ddeefe;
+}
+
+/* font */
+.welcome,
+.section-title {
+  font-weight: bold;
+}
+
+section,
+#action-btn {
+  text-align: center;
+}
+
+
+/* Media Queries */
+@media screen and (min-width: 500px) {
+  .content-box {
+    flex: 1 40%;
+    margin: 10px 1rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .menu-items {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 40%;
+    min-height: 0.5vh;
+    justify-content: space-around;
+    background-color: #eeeeee;
+    font-size: 1.4rem;
+
+  }
+
+  .website-title,
+  .menu-item {
+    display: inline-flex;
+    margin: 0px auto 10px 5px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .fa-solid.fa-bars,
+  .close-menu-btn {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    margin: 0 auto;
+  }
+
+  nav {
+    flex-wrap: nowrap;
+  }
+
+  .website-title {
+    width: 70%;
+    justify-content: flex-start;
+  }
+
+  .menu-items {
+    width: 30%;
+    margin-left: 20px;
+    justify-content: flex-end;
+  }
+
+  main {
+    max-width: 1200px;
+  }
+}
