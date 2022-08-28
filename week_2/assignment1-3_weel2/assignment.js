@@ -74,6 +74,7 @@ Assignment 3: Function, Array, and Object
 */
 
 const assignment3 = document.querySelector('.assignment-3')
+/* 
 function calculate2(data) {
   // your code here
   let totalPrice = 0
@@ -81,6 +82,19 @@ function calculate2(data) {
   for (let i = 0; i < productsInfo.length; i++) {
     productsInfo[i].specialOffer = productsInfo[i].price * (1 - data.discount)
     totalPrice += productsInfo[i].specialOffer
+  }
+  console.log(totalPrice)
+  return totalPrice
+}
+ */
+
+function calculate2(data) {
+  // your code here
+  let totalPrice = 0
+  let productsInfo = data.products
+  for (let i = 0; i < productsInfo.length; i++) {
+    let specialOffer = productsInfo[i].price * (1 - data.discount)
+    totalPrice += specialOffer
   }
   console.log(totalPrice)
   return totalPrice

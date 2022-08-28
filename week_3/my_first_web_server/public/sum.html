@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doing a sum</title>
+</head>
+
+<body>
+  <h2>Let's do a sum!</h2>
+  <p>For example, if you enter 10, you can get the result of 1+2+....+10 in the page.</p>
+  <button id="exampleBtn" type='submit' , id="submitBtn">Click here to show the result</button>
+  <div id=exampleResult></div><br><br>
+  <form action='/getData'>
+    <label>It's your turn!<br><br>Please enter a positive integer below <br>
+      <input type="text" , name="number" , placeholder="Positive integer only">
+      <button type='submit' , id="submitBtn">Submit</button>
+    </label>
+
+
+    <script>
+      const exampleBtn = document.querySelector('#exampleBtn')
+      exampleBtn.addEventListener('click', async (event) => {
+        const exampleResult = document.querySelector('#exampleResult')
+        const exampleResponse = await fetch('http://localhost:3000/getData?number=10')
+        try {
+          const data = await exampleResponse.json()
+          exampleResult.textContent = `${data}`
+        } catch (err) {
+          const errMessage = new Error(exampleResponse.statusText)
+          exampleBtn.innerHTML += `<p>${errMessage}</p>`
+        } finally {
+          event.target.remove()
+        }
+      })
+    </script>
+</body>
+
+</html>
