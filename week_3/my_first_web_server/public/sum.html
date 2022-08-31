@@ -11,31 +11,31 @@
 <body>
   <h2>Let's do a sum!</h2>
   <p>For example, if you enter 10, you can get the result of 1+2+....+10 in the page.</p>
-  <button id="exampleBtn" type='submit' , id="submitBtn">Click here to show the result</button>
+  <button id="exampleBtn" type="submit">Click here to show the result</button>
   <div id=exampleResult></div><br><br>
-  <form action='/getData'>
-    <label>It's your turn!<br><br>Please enter a positive integer below <br>
-      <input type="text" , name="number" , placeholder="Positive integer only">
-      <button type='submit' , id="submitBtn">Submit</button>
-    </label>
+  <p>It's your turn!</p>
+  <form action="/sum">
+    <button id="goBtn" type="submit">Go to the page</button>
+  </form>
 
 
-    <script>
-      const exampleBtn = document.querySelector('#exampleBtn')
-      exampleBtn.addEventListener('click', async (event) => {
-        const exampleResult = document.querySelector('#exampleResult')
-        const exampleResponse = await fetch('http://localhost:3000/getData?number=10')
-        try {
-          const data = await exampleResponse.json()
-          exampleResult.textContent = `${data}`
-        } catch (err) {
-          const errMessage = new Error(exampleResponse.statusText)
-          exampleBtn.innerHTML += `<p>${errMessage}</p>`
-        } finally {
-          event.target.remove()
-        }
-      })
-    </script>
+
+  <script>
+    const exampleBtn = document.querySelector('#exampleBtn')
+    exampleBtn.addEventListener('click', async (event) => {
+      const exampleResult = document.querySelector('#exampleResult')
+      const exampleResponse = await fetch('http://localhost:3000/getData?number=10')
+      try {
+        const data = await exampleResponse.json()
+        exampleResult.textContent = `${data}`
+      } catch (err) {
+        const errMessage = new Error(exampleResponse.statusText)
+        exampleBtn.innerHTML += `<p>${errMessage}</p>`
+      } finally {
+        event.target.remove()
+      }
+    })
+  </script>
 </body>
 
 </html>

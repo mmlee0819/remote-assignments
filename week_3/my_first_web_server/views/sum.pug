@@ -1,0 +1,11 @@
+extends layout.pug
+
+
+block content  
+  section#responseResult
+    if number > 0
+      p The number you typed in is #{number} 
+      P Sum: #{sum}
+    else if !number
+      p= wrongMessage
+      p Please try again, enter a positive integer.  

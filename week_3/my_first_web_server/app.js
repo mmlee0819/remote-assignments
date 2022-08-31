@@ -1,10 +1,18 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 
 const app = express()
 const port = 3000
 
-
 app.use('/', express.static('public'))
+app.use(bodyParser.urlencoded({ extended: false }))
+
+
+app.set('view engine', 'pug')
+
+const sumRoutes = require('./routes/sum')
+
+app.use('/sum', sumRoutes)
 
 
 app.get('/', (req, res) => {
@@ -27,7 +35,6 @@ app.get('/getData', (req, res) => {
 app.get('/sum.html', (req, res) => {
   res.render('sum.html')
 })
-
 
 
 app.listen(port, () => {
