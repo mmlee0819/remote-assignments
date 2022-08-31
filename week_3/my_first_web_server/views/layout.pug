@@ -3,11 +3,10 @@ html(lang="en")
   head
     title Do a Sum! 
   body 
-    header
-      h2 Let's do a sum!
-      form(action='/sum', method='post')
-        label Please enter a positive integer : 
-          input(type='text', name='number',placeholder=" positive integer only ")
-        button(type='submit') Submit
-    
+    h2 Let's do a sum!
+    form(action='/sum', method='post')
+      label Please enter a positive integer : 
+        input(type='text', name='number',placeholder=" positive integer only ")
+      button(type='submit') Submit
+  
     block content 

@@ -9,19 +9,35 @@
 </head>
 
 <body>
-  <h2>Let's do a sum!</h2>
-  <p>For example, if you enter 10, you can get the result of 1+2+....+10 in the page.</p>
-  <button id="exampleBtn" type="submit">Click here to show the result</button>
-  <div id=exampleResult></div><br><br>
+  <div>
+    <h2>Let's do a sum!</h2>
+    <p>For example, if you enter 10, you can get the result of 1+2+....+10 in the page.</p>
+    <button id="exampleBtn" type="submit">Click here to show the result</button>
+    <div id=exampleResult></div><br><br>
+  </div>
   <p>It's your turn!</p>
-  <form action="/sum">
-    <button id="goBtn" type="submit">Go to the page</button>
-  </form>
+  <div class="userInput">
+    <form>
+      <label>Please enter a positive integer : </label>
+      <!-- <input id="inputValue" type="text" name="number" placeholder=" positive integer only "> -->
+      <input id="inputValue" type="text" placeholder=" positive integer only ">
+      <button id="submitBtn" type="button">Submit</button>
+    </form>
+    <div id=inputResult></div><br><br>
+  </div>
 
+  <div>
+    <form action="/sum">
+      <label>Do a sum by using Pug!</label>
+      <button id="goBtn" type="submit">Go to the page</button>
+    </form>
+  </div>
 
 
   <script>
     const exampleBtn = document.querySelector('#exampleBtn')
+    const submitBtn = document.querySelector('#submitBtn')
+
     exampleBtn.addEventListener('click', async (event) => {
       const exampleResult = document.querySelector('#exampleResult')
       const exampleResponse = await fetch('http://localhost:3000/getData?number=10')
@@ -33,6 +49,21 @@
         exampleBtn.innerHTML += `<p>${errMessage}</p>`
       } finally {
         event.target.remove()
+      }
+    })
+
+    submitBtn.addEventListener('click', async (event) => {
+      const input = document.querySelector('#inputValue')
+      const inputValue = input.value
+      const fetchURL = `http://localhost:3000/getData?number=${inputValue}`
+      const inputResult = document.querySelector('#inputResult')
+      try {
+        const inputResponse = await fetch(fetchURL)
+        const data = await inputResponse.json()
+        inputResult.textContent = `Sum = ${data}`
+      } catch (err) {
+        inputResult.textContent = ''
+        inputResult.textContent = 'Wrong input value, please try again'
       }
     })
   </script>
