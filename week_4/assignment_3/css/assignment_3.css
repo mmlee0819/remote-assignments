@@ -11,7 +11,7 @@ body {
 }
 
 nav,
-.welcome,
+.change-welcome-message,
 .content-wrapper,
 .content-wrapper-hidden {
   display: flex;
@@ -19,12 +19,13 @@ nav,
 }
 
 /* header */
+
 nav {
   background-color: #eeeeee;
 }
 
 .website-title {
-  margin: 0.6rem auto 0.6rem 1.6rem;
+  margin: 0.6rem auto 0rem 1.6rem;
   font-size: 1rem;
   font-weight: lighter;
 }
@@ -65,7 +66,7 @@ nav {
   font-size: 1.4rem;
 }
 
-.welcome {
+.change-welcome-message {
   height: 200px;
   font-size: 1.8rem;
   background-color: #ccdded;
@@ -102,7 +103,7 @@ main {
 }
 
 /* font */
-.welcome,
+.change-welcome-message,
 .section-title {
   font-weight: bold;
 }
@@ -121,8 +122,16 @@ section,
 }
 
 @media screen and (min-width: 800px) {
+
+  nav,
+  .website-title,
   .menu-items {
-    position: relative;
+    padding-top: 10px;
+    background-color: #eeeeee;
+  }
+
+  .menu-items {
+    position: fixed;
     top: 0px;
     right: 0px;
     display: flex;
@@ -132,7 +141,6 @@ section,
     justify-content: space-around;
     background-color: #eeeeee;
     font-size: 1.4rem;
-
   }
 
   .website-title,
@@ -142,6 +150,7 @@ section,
     padding: 10px;
     font-size: 1rem;
   }
+
 
   .fa-solid.fa-bars,
   .close-menu-btn {

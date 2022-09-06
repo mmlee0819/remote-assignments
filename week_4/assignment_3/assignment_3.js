@@ -12,40 +12,70 @@ const Nav = () => {
     <nav>
       <h1 className="website-title">{'Website Title / Logo'}</h1>
       <Menu />
-    </nav>
+    </nav >
   )
 }
 
+
 class Menu extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super()
     this.state = {
-      isShown: true
-    };
+      right: "0px"
+    }
+    this.handleMenuPosition = this.handleMenuPosition.bind(this)
   }
 
+  handleMenuPosition = (event) => {
+    const mediaMatch = window.matchMedia("(max-width: 799px)")
+    if (event.target.className === 'fa-solid fa-bars') {
+      console.log(event.target)
+      this.setState({ right: "0px" })
+    } else if (event.target.className === 'close-menu-btn') {
+      this.setState({ right: "-1000px" })
+    } else if (!mediaMatch) {
+      this.setState({ right: "0px" })
+    }
+  }
   render() {
+    const { right } = this.state
     return (
-      <div className="mobile-menu-area" >
-        <ul className="menu-items">
+      <div className="mobile-menu-area" onClick={this.handleMenuPosition}>
+        <ul className="menu-items" style={{ right }}>
           <li className="menu-item">Item 1</li>
           <li className="menu-item">Item 2</li>
           <li className="menu-item">Item 3</li>
           <li className="menu-item">Item 4</li>
         </ul>
-        <span className="close-menu-btn" >X</span>
-        <span><i className="fa-solid fa-bars" ></i></span>
+        <span className="close-menu-btn" style={{ right }}>X</span>
+        <span><i className="fa-solid fa-bars"></i></span>
       </div>
     )
   }
 }
 
-const Welcome = () => {
-  return (
-    <div className="welcome">
-      <p>Welcome Message</p>
-    </div>
-  )
+
+
+class Welcome extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      title: "Welcome Message"
+    }
+    this.changeWelcomeMessage = this.changeWelcomeMessage.bind(this)
+  }
+
+  changeWelcomeMessage = () => {
+    this.setState({ title: "Have a GoodTime!" })
+  }
+
+  render() {
+    return (
+      <div className="change-welcome-message" onClick={this.changeWelcomeMessage}>
+        <p>{this.state.title}</p>
+      </div >
+    )
+  }
 }
 
 
@@ -54,9 +84,9 @@ class Main extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isHide: true,
+      isHide: true
     }
-    this.callToAction = this.callToAction.bind(this);
+    this.callToAction = this.callToAction.bind(this)
   }
 
   callToAction = () => {
@@ -73,10 +103,8 @@ class Main extends React.Component {
           <h2 className="section-title">Section Title</h2>
           <ContentWrapper />
           <div className="action-btn" onClick={this.callToAction}>Call to Action</div>
-          <br></br>
           <div className="content-wrapper-hidden" style={
-            isHide ? { display: "none" } : { display: "inline-flex" }}>
-            <br></br>
+            isHide ? { display: "none" } : { display: "flex" }}>
             <div className="content-box">Content Box 5</div>
             <div className="content-box">Content Box 6</div>
             <div className="content-box">Content Box 7</div>
@@ -87,7 +115,6 @@ class Main extends React.Component {
     )
   }
 }
-
 const ContentWrapper = () => {
   return (
     <div className="content-wrapper">
@@ -99,18 +126,7 @@ const ContentWrapper = () => {
   )
 }
 
-// const ContentWrapperHidden = () => {
-//   return (
-//     <div className="content-wrapper-hidden" >
-//       <div className="content-box">Content Box 5</div>
-//       <div className="content-box">Content Box 6</div>
-//       <div className="content-box">Content Box 7</div>
-//       <div className="content-box">Content Box 8</div>
-//     </div >
-//   )
-// }
-
-const App = (props) => {
+const App = () => {
   return (
     <React.StrictMode>
       <Header />
@@ -119,7 +135,9 @@ const App = (props) => {
   )
 }
 
+
 ReactDOM.render(
   <App />,
   document.getElementById('root')
-) 
+)
+
